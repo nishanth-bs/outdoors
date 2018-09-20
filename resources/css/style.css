@@ -51,18 +51,38 @@ body{
   transform: translate(-50%,-50%);
 
   text-align: center;
+  
+  /* fix for shaky container */
+  backface-visibility: hidden;
 }
 .text-primary{
   display: block;
   font-size: 60px;
   font-weight: 300;
   letter-spacing: 35px;
+
+  /*add animation */
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /*
+  animation-delay: 3s;
+  animation-iteration-count:3;
+  */
 }
 .text-secondary{
   display: block;
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 16.8px;
+
+  /*animation */
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /* short hand
+  animation: moveInRight 1s ease-out;
+  */
 }
 
 .btn{
@@ -70,4 +90,32 @@ body{
   text-decoration: none;
   padding: 15px;
   border-radius: 600px;
+}
+
+
+@keyframes moveInLeft {
+  0%{
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80%{
+    transform: translateX(10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes moveInRight {
+  0%{
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80%{
+    transform: translateX(-10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
