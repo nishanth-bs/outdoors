@@ -40,3 +40,34 @@ body{
 .logo img{
   height: 35px;
 }
+
+.text-heading{
+  color: #fff;
+  text-transform: uppercase;
+  /* centering the element in the middle of the screen */
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  text-align: center;
+}
+.text-primary{
+  display: block;
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 35px;
+}
+.text-secondary{
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 16.8px;
+}
+
+.btn{
+  background-color: #fff;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 600px;
+}
