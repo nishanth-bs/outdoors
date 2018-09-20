@@ -1,0 +1,42 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  padding: 30px; /* not the case of inheritance */
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+}
+
+.header{
+  height: 95vh;
+  position: relative;
+  background-image: linear-gradient(to right bottom, rgba(5, 201, 51,0.7),rgba(124, 252, 154,0.7)), url(../img/hero.jpg);
+  background-position: top;
+  background-size: cover;
+
+  /*clips  the image in the shape we want it to be clockwise direction*/
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.logo img{
+  height: 35px;
+}
