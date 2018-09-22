@@ -6,17 +6,28 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
-*{
+*,
+*::after,
+*::before{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit; /*good practice: not automatically inherited */
+}
+/* root element */
+html{
+  /* browser def - 16px; if user changes it- relative to that */
+  /* 100% - 16px -- 62.5% - 10px */
+  font-size: 62.5%;
 }
 
 body{
-  padding: 30px; /* not the case of inheritance */
+  padding: 3rem; /* not the case of inheritance */
   font-family: sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  box-sizing: border-box;
+  /*
+  font-size: 1.6rem;
+  */
   line-height: 1.7;
   color: #777;
 }
@@ -34,11 +45,11 @@ body{
 
 .logo{
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 1.5rem;
+  left: 1.5rem;
 }
 .logo img{
-  height: 35px;
+  height: 3.5rem;
 }
 
 .text-heading{
@@ -57,9 +68,9 @@ body{
 }
 .text-primary{
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 300;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   /*add animation */
   animation-name: moveInLeft;
@@ -72,9 +83,9 @@ body{
 }
 .text-secondary{
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 600;
-  letter-spacing: 16.8px;
+  letter-spacing: 1.7rem;
 
   /*animation */
   animation-name: moveInRight;
@@ -84,15 +95,16 @@ body{
   animation: moveInRight 1s ease-out;
   */
 
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
 .btn:link,
 .btn:visited{
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
-  border-radius: 600px;
+  padding: 1.5rem 4rem;
+  border-radius: 60rem;
+  font-size: 1.6rem;
 
   /*is inline element, for the box model to work, make it inline block */
   display: inline-block;
@@ -108,12 +120,12 @@ body{
   animation-fill-mode: backwards;
 }
 .btn:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* shadow left, shadow bottom, blur, shadow color */
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.3); /* shadow left, shadow bottom, blur, shadow color */
 }
 .btn:active{
-  transform: translateY(-1px); /* in relation to initial state, not the hover state */
-  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transform: translateY(-.1rem); /* in relation to initial state, not the hover state */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,0.3);
 }
 .btn-white{
   background-color: #fff;
@@ -124,7 +136,7 @@ body{
   display: inline-block;/*same as btn */
   height: 100%; /* coz child of btn  */
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   /* to get this behind the button */
   position: absolute;
   top: 0;
@@ -146,10 +158,10 @@ body{
 @keyframes moveInLeft {
   0%{
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
   80%{
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
   100%{
     opacity: 1;
@@ -159,10 +171,10 @@ body{
 @keyframes moveInRight {
   0%{
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
   80%{
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
   100%{
     opacity: 1;
@@ -172,10 +184,10 @@ body{
 @keyframes moveInBottom {
   0%{
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(10rem);
   }
   80%{
-    transform: translateY(-10px);
+    transform: translateY(-1rem);
   }
   100%{
     opacity: 1;
