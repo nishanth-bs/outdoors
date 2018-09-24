@@ -1,0 +1,216 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+$color-primary: #55c57a;
+$color-primary-light : #7ed56f;
+$color-primary-dark: #28b485;
+$color-white: #fff;
+$color-black: #000;
+$color-grey-dark: #777;
+
+*,
+*::after,
+*::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /*good practice: not automatically inherited */
+}
+/* root element */
+html{
+  /* browser def - 16px; if user changes it- relative to that */
+  /* 100% - 16px -- 62.5% - 10px */
+  font-size: 62.5%;
+}
+
+body{
+  padding: 3rem; /* not the case of inheritance */
+  font-family: sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  /*
+  font-size: 1.6rem;
+  */
+  line-height: 1.7;
+  color: $color-grey-dark;
+}
+
+.header{
+  height: 95vh;
+  position: relative;
+  background-image: linear-gradient(to right bottom, rgba($color-primary-light,0.7),rgba($color-primary-dark,0.7)), url(../img/hero.jpg);
+  background-position: top;
+  background-size: cover;
+
+  /*clips  the image in the shape we want it to be clockwise direction*/
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  &__logo-box{
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+  &__logo{
+    height: 3.5rem;
+  }
+  &__text-box{
+    color: $color-white;
+    text-transform: uppercase;
+    /* centering the element in the middle of the screen */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    text-align: center;
+
+    /* fix for shaky container */
+    backface-visibility: hidden;
+  }
+}
+
+.heading-primary{
+  color: $color-white;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+  &--main{
+    display: block;
+    font-size: 6rem;
+    font-weight: 300;
+    letter-spacing: 3.5rem;
+
+    /*add animation */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+    animation-delay: 3s;
+    animation-iteration-count:3;
+    */
+  }
+  &--sub{
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1.7rem;
+
+    /*animation */
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* short hand
+    animation: moveInRight 1s ease-out;
+    */
+
+    margin-bottom: 6rem;
+  }
+
+}
+
+
+.btn{
+  &:link,
+  &:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 60rem;
+    font-size: 1.6rem;
+
+    /*is inline element, for the box model to work, make it inline block */
+    display: inline-block;
+
+    /* on initialstate, define animation */
+    transition: all 0.2s;
+
+    position: relative; /* for after pseudo-element */
+  }
+  &-animated{
+    animation: moveInBottom 1s ease-out 0.65s;
+    /* element displayed only after the animation starts */
+    animation-fill-mode: backwards;
+  }
+  &:hover{
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black,0.3); /* shadow left, shadow bottom, blur, shadow color */
+    &::after{
+      transform: scaleX(1.4) scaleY(1.6); /*scale(1.5); */
+      opacity: 0;
+    }
+
+  }
+  &:active{
+    transform: translateY(-.1rem); /* in relation to initial state, not the hover state */
+    box-shadow: 0 .5rem 1rem rgba($color-black,0.3);
+  }
+  &-white{
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after{
+      background-color: $color-white;
+    }
+  }
+  &::after{
+    content:  "";
+    display: inline-block;/*same as btn */
+    height: 100%; /* coz child of btn  */
+    width: 100%;
+    border-radius: 10rem;
+    /* to get this behind the button */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    transition: all .2s;
+  }
+
+
+
+}
+
+
+@keyframes moveInLeft {
+  0%{
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80%{
+    transform: translateX(1rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes moveInRight {
+  0%{
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80%{
+    transform: translateX(-1rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes moveInBottom {
+  0%{
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+  80%{
+    transform: translateY(-1rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

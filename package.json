@@ -1,0 +1,14 @@
+{
+  "name": "outdoors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "compile:sass":"node-sass sass/main.scss resources/css/style.css -w"
+  },
+  "author": "Nishanth BS",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.9.3"
+  }
+}
